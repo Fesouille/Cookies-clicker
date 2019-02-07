@@ -35,9 +35,9 @@ function check_autoclick(){
 		}
 }
 
-/*Initialize the autoclick
-i.e. if it does not exists, it creates it. If it does, it calls the check_autoclick() functions
-WARNING: This functions must be added in the addcookie() function or any function that add cookies to the counter*/
+/*WARNING: This functions must be added in the addcookie() function or any function that add cookies to the counter
+--> Initialize the autoclick
+i.e. if it does not exists, it creates it. If it does, it calls the check_autoclick() functions*/
 function add_autoclick(){
 	if(autoclick==false){
 		if(score==autoclick_price){
