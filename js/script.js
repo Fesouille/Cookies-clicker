@@ -53,7 +53,7 @@ function checkprix() {
     switch (cebtn.id) {
 
       case "multiplier":
-        if (score < multprice) {
+        if (score < mult_price) {
           cebtn.disabled = true;
         } else {
           cebtn.disabled = false;
