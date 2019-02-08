@@ -3,6 +3,7 @@ var score = 0;
 var cookieperclick = 1;
 var multiplicateur = 1;
 var mult_price = 10;
+var benable = false;
 
 //autoclic variables - BEGIN
 var autoclic=false;
@@ -21,22 +22,24 @@ var autoclic_msg=document.createElement("p");
         score = score + cookieperclick;
         displayscore(score);
         add_autoclic();
+        console.log(cookieperclick);
     };
-    
-    setInterval(function(){ 
-        displayscore(score); 
+
+    setInterval(function(){
+        displayscore(score);
+        checkprix();
     }, 10);
-    
+
     function displayscore(){
         document.getElementsByClassName("affichage")[0].setAttribute("value", score);
         document.getElementsByClassName("affichage")[0].innerHTML = "here your cookies : " + score;
     };
-    
+
     document.getElementById("click").addEventListener("click", function(){
         addcookie();
         console.log(score);
     });
-      
+
 /* Partie de JM */
 
     function augmenterMultiplicateur (){
@@ -46,13 +49,19 @@ var autoclic_msg=document.createElement("p");
     function make_price(price){
         return price*2;
     };
-    
+
     document.getElementById("multiplier").innerHTML = "Multiplier x"+ multiplicateur + " Price: " + mult_price;
 
     document.getElementById("multiplier").addEventListener("click", function(){
-        
+
             if (score >= mult_price){
-                cookieperclick = cookieperclick + multiplicateur;
+                if(!benable){
+                  cookieperclick = cookieperclick + multiplicateur;
+                  console.log("normal");
+                } else{
+                  cookieperclick = cookieperclick + multiplicateur + multiplicateur;
+                  console.log("bonus");
+                }
                 augmenterMultiplicateur(multiplicateur);
                 document.getElementById("multiplier").innerHTML = "Multiplier x"+ multiplicateur + " Price: " + make_price(mult_price);
                 score = score - mult_price;
@@ -108,3 +117,91 @@ var autoclic_msg=document.createElement("p");
 
 }());
 
+// Initialisation du bonus
+function bonusinit() {
+  var b = document.querySelector(".maincontainer").appendChild(document.createElement("button"));
+  b.setAttribute("id", "bonus");
+  b.setAttribute("type", "button");
+  b.setAttribute("value", "5000");
+  b.appendChild(document.createTextNode("Bonus [Prix = 5000]"));
+};
+
+// !!! BONUS TIME !!!
+// AJOUTER LE CHECK DE L'ACHAT DE MULTI LORS DU BONUS
+function bonus_time() {
+
+  score = score - 5000;
+  cookieperclick = cookieperclick * 2;
+
+  benable = true;
+  btps = 30;
+  m = multiplicateur;
+
+  bb = document.getElementById("bonus");
+  bb.setAttribute('disabled', 'true');
+  bb.innerHTML = "BONUS TIME " + btps + "s";
+  bb.removeEventListener("click", bonus_time);
+
+  var countdown = setInterval(function() {
+
+    btps--;
+    bb.innerHTML = "BONUS TIME " + btps + "s";
+
+    if(m != multiplicateur){
+      m
+    }
+
+    if(btps < 1){
+      bb.addEventListener("click", bonus_time);
+      benable = false;
+      cookieperclick = cookieperclick / 2;
+      bb.innerHTML = "Bonus [Prix = 5000]";
+      bb.removeAttribute("disabled");
+      clearInterval(countdown);
+    }
+
+  }, 1000);
+
+};
+
+//le juste prix
+function checkprix() {
+
+  btns = document.querySelectorAll("button");
+
+  btns.forEach(function(cebtn) {
+
+    switch (cebtn.id) {
+
+      case "multiplier":
+        if (score < mult_price) {
+          cebtn.disabled=true;
+        } else {
+          cebtn.disabled=false;
+        };
+        break;
+
+      case "bonus":
+        if (score < 5000 || benable) {
+          cebtn.disabled=true;
+        } else {
+          cebtn.disabled=false;
+        };
+        break;
+
+      case "autoclic":
+        if (score < autoclic_price) {
+          cebtn.disabled=true;
+        } else {
+          cebtn.disabled=false;
+        };
+        break;
+    }
+
+  });
+
+}
+
+bonusinit();
+
+document.getElementById("bonus").addEventListener("click", bonus_time);
