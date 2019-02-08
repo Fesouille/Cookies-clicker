@@ -32,7 +32,7 @@ function add_autoclic(){
 	if(autoclic==false){
 		if(score==autoclic_price){
 			document.querySelector(".maincontainer").appendChild(autoclic_button).innerHTML="Auto-clic,  price="+autoclic_price;
-			document.querySelector(".maincontainer").appendChild(autoclic_msg).innerHTML="Yeay, you've unlocked the autoclick! This will clic automatically every second :)";
+			document.querySelector(".maincontainer").appendChild(autoclic_msg).innerHTML="Yeay, you've unlocked the autoclick! It clicks automatically every second :)";
 			setTimeout(function(){document.querySelector(".maincontainer").removeChild(autoclic_msg)}, 3*1000);
 			autoclic=true;
 		}
