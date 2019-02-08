@@ -32,11 +32,6 @@ function bonus_time() {
     btps--;
     bb.innerHTML = "BONUS TIME " + btps + "s";
 
-    // while(m != multiplicateur){
-    //   cookieperclick = cookieperclick + m;
-    //   m++;
-    // }
-
     if(btps < 1){
       cookieperclick = cookieperclick / 2;
       bb.innerHTML = "Bonus [Prix = 5000]";
