@@ -25,7 +25,6 @@ var autoclic_msg=document.createElement("p");
     
     setInterval(function(){ 
         displayscore(score); 
-        console.log( "hello" )
     }, 10);
     
     function displayscore(){
