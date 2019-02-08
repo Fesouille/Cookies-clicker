@@ -33,7 +33,7 @@ function bonus_time() {
     bb.innerHTML = "BONUS TIME " + btps + "s";
 
     if(btps < 1){
-      cookieperclick = cookieperclick / 2;
+      cookieperclick = Math.floor(cookieperclick / 2);
       bb.innerHTML = "Bonus [Prix = 5000]";
       bb.disabled = false;
       clearInterval(countdown);
