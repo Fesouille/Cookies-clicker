@@ -123,6 +123,7 @@ function bonusinit() {
   b.setAttribute("id", "bonus");
   b.setAttribute("type", "button");
   b.setAttribute("value", "5000");
+  b.setAttribute("class", "upgrade_button");
   b.appendChild(document.createTextNode("Bonus [Prix = 5000]"));
 };
 
