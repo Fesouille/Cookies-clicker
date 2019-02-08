@@ -1,5 +1,6 @@
 var score =0;
 var cookieperclick = 1;
+
 //autoclic variables - BEGIN
 var autoclic=false;
 var autoclic_button=document.createElement("button");
@@ -7,6 +8,7 @@ autoclic_button.setAttribute("type", "button");
 autoclic_button.setAttribute("id", "autoclic");
 autoclic_button.setAttribute("class", "upgrade_button");
 var autoclic_price=5;
+var autoclic_count=0;
 var autoclic_msg=document.createElement("p");
 //Autoclic variables - END
 
@@ -31,7 +33,7 @@ i.e. if it does not exists, it creates it. If it does, it calls the check_autocl
 function add_autoclic(){
 	if(autoclic==false){
 		if(score==autoclic_price){
-			document.querySelector(".maincontainer").appendChild(autoclic_button).innerHTML="Auto-clic,  price="+autoclic_price;
+			document.querySelector(".maincontainer").appendChild(autoclic_button).innerHTML="Auto-clic "+autoclic_count+"x,  price="+autoclic_price;
 			document.querySelector(".maincontainer").appendChild(autoclic_msg).innerHTML="Yeay, you've unlocked the autoclick! It clicks automatically every second :)";
 			setTimeout(function(){document.querySelector(".maincontainer").removeChild(autoclic_msg)}, 3*1000);
 			autoclic=true;
@@ -63,7 +65,8 @@ autoclic_button.addEventListener("click", function(){
 	score-=autoclic_price;
 	displayscore(score);
 	autoclic_price=make_price(autoclic_price);
-	autoclic_button.innerHTML="Auto-clic, price="+autoclic_price;
+	autoclic_count++;
+	autoclic_button.innerHTML="Auto-clic "+autoclic_count+"x,  price="+autoclic_price;
 	check_autoclic();
 	setInterval(addcookie, 1000);
 })
