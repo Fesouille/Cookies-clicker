@@ -22,6 +22,7 @@ var autoclic_msg=document.createElement("p");
         score = score + cookieperclick;
         displayscore(score);
         add_autoclic();
+        rainingCookie();
         console.log(cookieperclick);
     };
 
@@ -110,7 +111,7 @@ var autoclic_msg=document.createElement("p");
 		autoclic_price=make_price(autoclic_price);
 		autoclic_count++;
 		autoclic_button.innerHTML="Auto-clic "+autoclic_count+"x,  price="+autoclic_price;
-		check_autoclic();
+    check_autoclic();
 		setInterval(addcookie, 1000);
 	})
 	//Autoclic functions - END
@@ -206,3 +207,29 @@ function checkprix() {
 bonusinit();
 
 document.getElementById("bonus").addEventListener("click", bonus_time);
+
+
+//Raining Cookies
+function rainingCookie (){
+  var elem = document.querySelector(".maincontainer").appendChild(document.createElement("img"));
+  elem.style.position = "absolute";
+  elem.style.width="50px";
+  elem.style.height="50px";
+  elem.style.zIndex="1";
+  elem.setAttribute("src", "img/rainingCookie.png");
+  console.log(elem);
+  elem.style.left = Math.random() *800 + "px";
+  console.log(elem);
+  var pos = 0;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (pos == 800) {
+      clearInterval(id);
+      elem.parentNode.removeChild(elem);
+    } else {
+      pos++; 
+      elem.style.top = pos + 'px';
+      console.log(elem);    
+    }
+  }
+};

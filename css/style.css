@@ -6,14 +6,24 @@
 */
 
 .maincontainer{
-  background: url(../img/cookie-background.jpg);
+	background: url(../img/cookie-background.jpg);
   background-size: cover;
-  background-repeat: no-repeat;
+	background-repeat: no-repeat;
+	z-index: 0;
 
 }
+
+.bouton{
+	width: 800px;
+	height:600px;
+	position: relative;
+	z-index: 2;
+}
+
 #click{
 	width:190px;
 	height:190px;
+	
 	border-radius: 50%;
 	background: url(../img/cookie.png);
 	background-size: 220px auto;
