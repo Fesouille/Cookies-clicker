@@ -1,9 +1,28 @@
 /* Partie de Ted */
-var score = 0;
+var score = 5000;
 var cookieperclick = 1;
 var multiplicateur = 1;
 var mult_price = 10;
 var benable = false;
+
+
+
+//These functions are made to launch different sounds when clicking on the upgrades and bonus button.
+var bonus_audio=document.createElement('audio');
+bonus_audio.setAttribute('src', '../Cookies-clicker/special_effects/bonus_time.mp3');
+
+function cookie_sound(){
+	var cookie_sound=document.createElement('audio');
+	cookie_sound.setAttribute('src', '../Cookies-clicker/special_effects/cookie_sound.mp3');
+	cookie_sound.play();
+}
+
+function upgrade_sound(){
+	var cookie_upgrade=document.createElement('audio');
+	cookie_upgrade.setAttribute('src', '../Cookies-clicker/special_effects/cookie_power.mp3');
+	cookie_upgrade.play();
+}
+//END of the sounds functions
 
 //autoclic variables - BEGIN
 var autoclic=false;
@@ -36,6 +55,7 @@ var autoclic_msg=document.createElement("p");
     };
 
     document.getElementById("click").addEventListener("click", function(){
+		cookie_sound();
         addcookie();
         console.log(score);
     });
@@ -53,7 +73,7 @@ var autoclic_msg=document.createElement("p");
     document.getElementById("multiplier").innerHTML = "Multiplier x"+ multiplicateur + " Price: " + mult_price;
 
     document.getElementById("multiplier").addEventListener("click", function(){
-
+		upgrade_sound();
             if (score >= mult_price){
                 if(!benable){
                   cookieperclick = cookieperclick + multiplicateur;
@@ -76,10 +96,10 @@ var autoclic_msg=document.createElement("p");
 	i.e. if it does not exists, it creates it. If it does, it calls the check_autoclic() functions*/
 	function add_autoclic(){
 		if(autoclic==false){
-			if(score==autoclic_price){
-				document.querySelector(".maincontainer").appendChild(autoclic_button).innerHTML="Auto-clic "+autoclic_count+"x,  price="+autoclic_price;
-				document.querySelector(".maincontainer").appendChild(autoclic_msg).innerHTML="Yeay, you've unlocked the autoclick! It clicks automatically every second :)";
-				setTimeout(function(){document.querySelector(".maincontainer").removeChild(autoclic_msg)}, 3*1000);
+			if(score>=autoclic_price){
+				document.querySelector("#autoclic_col").appendChild(autoclic_button).innerHTML="Auto-clic "+autoclic_count+"x,  price="+autoclic_price;
+				//document.querySelector(".maincontainer").appendChild(autoclic_msg).innerHTML="Yeay, you've unlocked the autoclick! It clicks automatically every second :)";
+				//setTimeout(function(){document.querySelector("#autoclic_col").removeChild(autoclic_msg)}, 3*1000);
 				autoclic=true;
 			}
 		}
@@ -105,6 +125,7 @@ var autoclic_msg=document.createElement("p");
 	- check_autoclic() function is called to make sure user cannot buy another one after new price is calculated
 	- finally, launch an interval for the function addcookie() every seconds*/
 	autoclic_button.addEventListener("click", function(){
+		upgrade_sound();
 		score-=autoclic_price;
 		displayscore(score);
 		autoclic_price=make_price(autoclic_price);
@@ -119,7 +140,7 @@ var autoclic_msg=document.createElement("p");
 
 // Initialisation du bonus
 function bonusinit() {
-  var b = document.querySelector(".maincontainer").appendChild(document.createElement("button"));
+  var b = document.querySelector("#bonus_col").appendChild(document.createElement("button"));
   b.setAttribute("id", "bonus");
   b.setAttribute("type", "button");
   b.setAttribute("value", "5000");
@@ -130,7 +151,7 @@ function bonusinit() {
 // !!! BONUS TIME !!!
 // AJOUTER LE CHECK DE L'ACHAT DE MULTI LORS DU BONUS
 function bonus_time() {
-
+  bonus_audio.play();
   score = score - 5000;
   cookieperclick = cookieperclick * 2;
 
@@ -159,6 +180,7 @@ function bonus_time() {
       bb.innerHTML = "Bonus [Prix = 5000]";
       bb.removeAttribute("disabled");
       clearInterval(countdown);
+      bonus_audio.pause();
     }
 
   }, 1000);

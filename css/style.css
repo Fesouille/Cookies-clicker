@@ -4,12 +4,17 @@
   src: url("fonts/***");
 }
 */
-
+body{
+	min-width: 420px;
+}
 .maincontainer{
   background: url(../img/cookie-background.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-
+  min-height: 250px;
+}
+#second_container{
+	display: flex;
 }
 #click{
 	width:190px;
@@ -34,6 +39,7 @@
 	background-color: #c4b7a6;
 	margin-right: 10px;
 	padding:5px 5px;
+	border-radius: 5%;
 }
 .affichage{
 	background-color: black;
@@ -42,4 +48,27 @@
 	font-weight: bold;
 	font-size: 25px;
 	text-align: center;
+	margin-bottom: 15px;
+}
+#upgrades, #cookies{
+	width:50%;
+	text-align: center;
+	position: relative;
+}
+#bonus{
+	width: 100%;
+	font-size: 25px;
+}
+#multiplier_col, #autoclic_col{
+	width: 50%;
+	font-size: 18px;
+}
+#multiplier, #autoclic{
+	width: 100%;
+}
+#upgrades table{
+	width: 100%;
+	position: absolute;
+	top:50%;
+	transform:translateY(-50%);
 }
