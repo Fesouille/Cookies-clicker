@@ -4,12 +4,23 @@
   src: url("fonts/***");
 }
 */
+.boing {
+  transition: all .2s ease-in-out;
+  outline: 0;
+}
+.boing:hover {
+  transform: scale(1.05);
+  outline: 0;
+}
+.boing:active {
+  transform: scale(1.0);
+  outline: 0;
+}
 
 .maincontainer{
   background: url(../img/cookie-background.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-
 }
 #click{
 	width:190px;
@@ -23,11 +34,6 @@
     border: none;
 }
 
-#click:hover{
-	width:200px;
-	height: 200px;
-	background-size: 233px auto;
-}
 .upgrade_button{
 	border:2px outset #c1946a;
 	color: white;
