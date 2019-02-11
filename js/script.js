@@ -216,11 +216,14 @@ function rainingCookie (){
   elem.style.width="50px";
   elem.style.height="50px";
   elem.style.zIndex="1";
+  var angle = Math.random()*360;
+  elem.style.transform= "rotate(" + angle + "deg)";
   elem.setAttribute("src", "img/rainingCookie.png");
   console.log(elem);
   elem.style.left = Math.random() *800 + "px";
   console.log(elem);
   var pos = 0;
+  var angle = Math.random() * 360;
   var id = setInterval(frame, 10);
   function frame() {
     if (pos == 800) {
@@ -229,6 +232,7 @@ function rainingCookie (){
     } else {
       pos++; 
       elem.style.top = pos + 'px';
+      elem.style.transform= "rotate("+ (angle + pos) + "deg)";
       console.log(elem);    
     }
   }
