@@ -57,14 +57,8 @@ function upgrade_sound(){
 
     function displayscore(){
         document.getElementsByClassName("affichage")[0].setAttribute("value", score);
-        document.getElementsByClassName("affichage")[0].innerHTML = "here your cookies : " + score;
+        document.getElementsByClassName("affichage")[0].innerHTML = "Here your cookies : " + score;
     };
-
-    document.getElementById("click").addEventListener("click", function(){
-		cookie_sound();
-        addcookie();
-        console.log(score);
-    });
 
     // actualize score on display each millisecond
     setInterval(function(){
@@ -98,7 +92,7 @@ function upgrade_sound(){
       explode.setAttribute("src", "img/"+ tableExplosions[Math.floor(tableExplosions.length * Math.random())]);
       explode.style.left = Math.random() *800 + "px";
       explode.style.top = Math.random() *600 + "px";
-        
+
       setTimeout(function frame() {
         explode.parentNode.removeChild(explode);
       }, 3000);
@@ -291,9 +285,9 @@ document.getElementById("click").addEventListener("click", function (){
       clearInterval(id);
       elem.parentNode.removeChild(elem);
     } else {
-      pos++; 
+      pos++;
       elem.style.top = pos + 'px';
-      elem.style.transform= "rotate("+ (angle + pos) + "deg)";    
+      elem.style.transform= "rotate("+ (angle + pos) + "deg)";
     }
   }
 });
