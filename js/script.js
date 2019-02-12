@@ -6,22 +6,22 @@ var benable = false;
 
 //autoclic variables - BEGIN
   //to specify that the autoclic does not exist yet
-var autoclic=false;
+  var autoclic=false;
   //creation of the autoclic button
-var autoclic_button=document.createElement("button");
-autoclic_button.setAttribute("type", "button");
-autoclic_button.setAttribute("id", "autoclic");
-autoclic_button.setAttribute("class", "upgrade_button");
+  var autoclic_button=document.createElement("button");
+  autoclic_button.setAttribute("type", "button");
+  autoclic_button.setAttribute("id", "autoclic");
+  autoclic_button.setAttribute("class", "upgrade_button");
   //value to buy an autoclic
-var autoclic_price=500;
+  var autoclic_price=500;
   //score value to get a free autoclic
-var autoclic_free=200;
+  var autoclic_free=200;
   //counting the number of autoclic.. init is 1 cause we get one free
-var autoclic_count=1;
-var autoclic_msg=document.createElement("p");
-autoclic_msg.setAttribute("id", "autoclic_msg");
-autoclic_msg.setAttribute("style", "top:"+(Math.random()*200)+"px");
-autoclic_msg.setAttribute("style", "left:"+(Math.random()*450)+"px");
+  var autoclic_count=1;
+  var autoclic_msg=document.createElement("p");
+  autoclic_msg.setAttribute("id", "autoclic_msg");
+  autoclic_msg.setAttribute("style", "top:"+(Math.random()*200)+"px");
+  autoclic_msg.setAttribute("style", "left:"+(Math.random()*450)+"px");
 //Autoclic variables - END
 
 //These functions are made to launch different sounds when clicking on the upgrades and bonus button.
@@ -57,7 +57,7 @@ function upgrade_sound(){
 
     function displayscore(){
         document.getElementsByClassName("affichage")[0].setAttribute("value", score);
-        document.getElementsByClassName("affichage")[0].innerHTML = "here your cookies : " + score;
+        document.getElementsByClassName("affichage")[0].innerHTML = "Here your cookies : " + score;
     };
 
     // actualize score on display each millisecond
@@ -216,6 +216,7 @@ function bonus_time() {
       bb.removeAttribute("disabled");
       clearInterval(countdown);
       bonus_audio.pause();
+      bonus_audio.currentTime = 0;
     }
 
   }, 1000);

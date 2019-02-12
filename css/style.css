@@ -4,12 +4,16 @@
   src: url("fonts/***");
 }
 */
-
+@font-face {
+	font-family: 'game_font';
+	src: url('../fonts/manaspc.ttf') format('truetype');
+ }
 body{
 	max-width: 80%;
 	min-width: 420px;
 	margin: auto;
 	margin-top: 15px;
+	font-family: "game_font";
 }
 .maincontainer{
   background: url(../img/cookie-background.jpg);
@@ -46,15 +50,6 @@ body{
 #click:active {
   transform: scale(1.0);
   outline: 0;
-}
-
-.affichage{
-	background-color: black;
-	opacity: 0.5;
-	color: white;
-	font-weight: bold;
-	font-size: 25px;
-	text-align: center;
 }
 #upgrades, #cookies{
 	width:50%;
@@ -107,15 +102,16 @@ button:disabled{
 	opacity: 0.55;
 	color: white;
 	padding:2px 10px;
-	border-radius: 25%;
+	border-radius: 15px;
 	margin:10px 15px;
 	box-shadow: 0 0 10px 5px #000 ;
 }
 .affichage{
-	background-color: black;
-	opacity: 0.55;
-	color: white;
+	/*background-color: black;
+	opacity: 0.55;*/
+	color: black;
 	font-weight: bold;
 	font-size: 25px;
 	text-align: center;
+	padding-top: 10px;
 }
