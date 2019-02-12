@@ -1,4 +1,3 @@
-/* Partie de Ted */
 var score = 0;
 var cookieperclick = 1;
 var multiplicateur = 1;
@@ -17,11 +16,11 @@ var autoclic_msg=document.createElement("p");
 //Autoclic variables - END
 
 (function() {
-
+    /*Ted*/
     function addcookie(){
         score = score + cookieperclick;
         displayscore(score);
-        add_autoclic();
+        add_autoclic(); /*Joseph*/
     };
 
     function displayscore(){
@@ -32,7 +31,7 @@ var autoclic_msg=document.createElement("p");
     // actualize score on display each millisecond
     setInterval(function(){
         displayscore(score);
-        checkprix();
+        checkprix();  /*Antoine*/
     }, 10);
 
     //add cookie and displays it when clicked
@@ -66,7 +65,7 @@ var autoclic_msg=document.createElement("p");
         explode.parentNode.removeChild(explode);
       }, 3000);
     });
-
+    /*Ted*/
 /* Partie de JM */
 
     function augmenterMultiplicateur (){
