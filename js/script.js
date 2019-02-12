@@ -6,15 +6,41 @@ var mult_price = 10;
 var benable = false;
 
 //autoclic variables - BEGIN
+  //to specify that the autoclic does not exist yet
 var autoclic=false;
+  //creation of the autoclic button
 var autoclic_button=document.createElement("button");
 autoclic_button.setAttribute("type", "button");
 autoclic_button.setAttribute("id", "autoclic");
 autoclic_button.setAttribute("class", "upgrade_button");
-var autoclic_price=5;
-var autoclic_count=0;
+  //value to buy an autoclic
+var autoclic_price=500;
+  //score value to get a free autoclic
+var autoclic_free=200;
+  //counting the number of autoclic.. init is 1 cause we get one free
+var autoclic_count=1;
 var autoclic_msg=document.createElement("p");
+autoclic_msg.setAttribute("id", "autoclic_msg");
+autoclic_msg.setAttribute("style", "top:"+(Math.random()*200)+"px");
+autoclic_msg.setAttribute("style", "left:"+(Math.random()*450)+"px");
 //Autoclic variables - END
+
+//These functions are made to launch different sounds when clicking on the upgrades and bonus button.
+var bonus_audio=document.createElement('audio');
+bonus_audio.setAttribute('src', '../Cookies-clicker/special_effects/bonus_time.mp3');
+
+function cookie_sound(){
+	var cookie_sound=document.createElement('audio');
+	cookie_sound.setAttribute('src', '../Cookies-clicker/special_effects/cookie_sound.mp3');
+	cookie_sound.play();
+}
+
+function upgrade_sound(){
+	var cookie_upgrade=document.createElement('audio');
+	cookie_upgrade.setAttribute('src', '../Cookies-clicker/special_effects/cookie_power.mp3');
+	cookie_upgrade.play();
+}
+//END of the sounds functions
 
 (function() {
 
@@ -36,6 +62,7 @@ var autoclic_msg=document.createElement("p");
     };
 
     document.getElementById("click").addEventListener("click", function(){
+		cookie_sound();
         addcookie();
         console.log(score);
     });
@@ -53,7 +80,7 @@ var autoclic_msg=document.createElement("p");
     document.getElementById("multiplier").innerHTML = "Multiplier x"+ multiplicateur + " Price: " + mult_price;
 
     document.getElementById("multiplier").addEventListener("click", function(){
-
+		upgrade_sound();
             if (score >= mult_price){
                 if(!benable){
                   cookieperclick = cookieperclick + multiplicateur;
@@ -76,10 +103,11 @@ var autoclic_msg=document.createElement("p");
 	i.e. if it does not exists, it creates it. If it does, it calls the check_autoclic() functions*/
 	function add_autoclic(){
 		if(autoclic==false){
-			if(score==autoclic_price){
-				document.querySelector(".maincontainer").appendChild(autoclic_button).innerHTML="Auto-clic "+autoclic_count+"x,  price="+autoclic_price;
-				document.querySelector(".maincontainer").appendChild(autoclic_msg).innerHTML="Yeay, you've unlocked the autoclick! It clicks automatically every second :)";
-				setTimeout(function(){document.querySelector(".maincontainer").removeChild(autoclic_msg)}, 3*1000);
+			if(score>=autoclic_free){
+				document.querySelector("#autoclic_col").appendChild(autoclic_button).innerHTML="Auto-clic "+autoclic_count+"x,  price="+autoclic_price;
+        setInterval(addcookie, 1000);
+				document.querySelector("#second_container").appendChild(autoclic_msg).innerHTML="Yeay, you've unlocked the autoclick! It clicks automatically every second :)";
+				setTimeout(function(){document.querySelector("#second_container").removeChild(autoclic_msg)}, 4*1000);
 				autoclic=true;
 			}
 		}
@@ -105,6 +133,7 @@ var autoclic_msg=document.createElement("p");
 	- check_autoclic() function is called to make sure user cannot buy another one after new price is calculated
 	- finally, launch an interval for the function addcookie() every seconds*/
 	autoclic_button.addEventListener("click", function(){
+		upgrade_sound();
 		score-=autoclic_price;
 		displayscore(score);
 		autoclic_price=make_price(autoclic_price);
@@ -119,17 +148,18 @@ var autoclic_msg=document.createElement("p");
 
 // Initialisation du bonus
 function bonusinit() {
-  var b = document.querySelector(".maincontainer").appendChild(document.createElement("button"));
+  var b = document.querySelector("#bonus_col").appendChild(document.createElement("button"));
   b.setAttribute("id", "bonus");
   b.setAttribute("type", "button");
   b.setAttribute("value", "5000");
+  b.setAttribute("class", "upgrade_button");
   b.appendChild(document.createTextNode("Bonus [Prix = 5000]"));
 };
 
 // !!! BONUS TIME !!!
 // AJOUTER LE CHECK DE L'ACHAT DE MULTI LORS DU BONUS
 function bonus_time() {
-
+  bonus_audio.play();
   score = score - 5000;
   cookieperclick = cookieperclick * 2;
 
@@ -158,6 +188,7 @@ function bonus_time() {
       bb.innerHTML = "Bonus [Prix = 5000]";
       bb.removeAttribute("disabled");
       clearInterval(countdown);
+      bonus_audio.pause();
     }
 
   }, 1000);
