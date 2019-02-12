@@ -33,9 +33,10 @@ body{
     border: none;
     position: relative;
 	top:18%;
+	z-index: 2;
 	/* transform:translateY(-50%); */
   transition: all .2s ease-in-out;
-  outline: 0;
+	outline: 0;
 }
 #click:hover {
   transform: scale(1.05);
