@@ -19,7 +19,6 @@ body{
 #second_container{
 	display: flex;
 	position: relative;
-	background-color: red;
 	height:100%;
 }
 #click{
@@ -32,6 +31,9 @@ body{
     background-repeat: no-repeat;
     background-position: -19px -3px;
     border: none;
+    position: relative;
+	top:50%;
+	transform:translateY(-50%);
 }
 
 #click:hover{
