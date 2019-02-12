@@ -1,4 +1,3 @@
-/* Partie de Ted */
 var score = 0;
 var cookieperclick = 1;
 var multiplicateur = 1;
@@ -67,6 +66,44 @@ function upgrade_sound(){
         console.log(score);
     });
 
+    // actualize score on display each millisecond
+    setInterval(function(){
+        displayscore(score);
+        checkprix();  /*Antoine*/
+    }, 10);
+
+    //add cookie and displays it when clicked
+    document.getElementById("click").addEventListener("click", function(){
+        addcookie();
+    });
+
+    //lancement video apd score = 1.000.000
+    var videoplay = setInterval(function(){
+      if (score > 999999) {
+        var video = document.querySelector(".maincontainer").appendChild(document.createElement("video"));
+        video.setAttribute("src", "img/Cool Guys Don't Look At Explosions.mp4");
+        video.setAttribute("autoplay", "true");
+        video.setAttribute("preload", "auto");
+        video.setAttribute("position", "absolute");
+        video.requestFullscreen;
+        clearInterval(videoplay);
+      }
+    }, 1);
+
+    //explosions lors du clic sur le multiplier
+    var tableExplosions = ["explosion.gif", "explosion-2.gif", "explosion-3.gif", "explosion-4.gif", "explosion-5.gif", "explosion-6.gif"]
+    document.getElementById("multiplier").addEventListener("click",function() {
+      var explode = document.querySelector(".maincontainer").appendChild(document.createElement("img"));
+      explode.style.position = "absolute";
+      explode.setAttribute("src", "img/"+ tableExplosions[Math.floor(tableExplosions.length * Math.random())]);
+      explode.style.left = Math.random() *800 + "px";
+      explode.style.top = Math.random() *600 + "px";
+        
+      setTimeout(function frame() {
+        explode.parentNode.removeChild(explode);
+      }, 3000);
+    });
+    /*Ted*/
 /* Partie de JM */
 
     function augmenterMultiplicateur (){

@@ -109,3 +109,11 @@ button:disabled{
 	margin:10px 15px;
 	box-shadow: 0 0 10px 5px #000 ;
 }
+.affichage{
+	background-color: black;
+	opacity: 0.55;
+	color: white;
+	font-weight: bold;
+	font-size: 25px;
+	text-align: center;
+}
