@@ -1,11 +1,29 @@
 /* Partie de Ted */
-var score = 5000;
+var score = 0;
 var cookieperclick = 1;
 var multiplicateur = 1;
 var mult_price = 10;
 var benable = false;
 
-
+//autoclic variables - BEGIN
+  //to specify that the autoclic does not exist yet
+var autoclic=false;
+  //creation of the autoclic button
+var autoclic_button=document.createElement("button");
+autoclic_button.setAttribute("type", "button");
+autoclic_button.setAttribute("id", "autoclic");
+autoclic_button.setAttribute("class", "upgrade_button");
+  //value to buy an autoclic
+var autoclic_price=500;
+  //score value to get a free autoclic
+var autoclic_free=200;
+  //counting the number of autoclic.. init is 1 cause we get one free
+var autoclic_count=1;
+var autoclic_msg=document.createElement("p");
+autoclic_msg.setAttribute("id", "autoclic_msg");
+autoclic_msg.setAttribute("style", "top:"+(Math.random()*200)+"px");
+autoclic_msg.setAttribute("style", "left:"+(Math.random()*450)+"px");
+//Autoclic variables - END
 
 //These functions are made to launch different sounds when clicking on the upgrades and bonus button.
 var bonus_audio=document.createElement('audio');
@@ -23,17 +41,6 @@ function upgrade_sound(){
 	cookie_upgrade.play();
 }
 //END of the sounds functions
-
-//autoclic variables - BEGIN
-var autoclic=false;
-var autoclic_button=document.createElement("button");
-autoclic_button.setAttribute("type", "button");
-autoclic_button.setAttribute("id", "autoclic");
-autoclic_button.setAttribute("class", "upgrade_button");
-var autoclic_price=5;
-var autoclic_count=0;
-var autoclic_msg=document.createElement("p");
-//Autoclic variables - END
 
 (function() {
 
@@ -96,10 +103,11 @@ var autoclic_msg=document.createElement("p");
 	i.e. if it does not exists, it creates it. If it does, it calls the check_autoclic() functions*/
 	function add_autoclic(){
 		if(autoclic==false){
-			if(score>=autoclic_price){
+			if(score>=autoclic_free){
 				document.querySelector("#autoclic_col").appendChild(autoclic_button).innerHTML="Auto-clic "+autoclic_count+"x,  price="+autoclic_price;
-				//document.querySelector(".maincontainer").appendChild(autoclic_msg).innerHTML="Yeay, you've unlocked the autoclick! It clicks automatically every second :)";
-				//setTimeout(function(){document.querySelector("#autoclic_col").removeChild(autoclic_msg)}, 3*1000);
+        setInterval(addcookie, 1000);
+				document.querySelector("#second_container").appendChild(autoclic_msg).innerHTML="Yeay, you've unlocked the autoclick! It clicks automatically every second :)";
+				setTimeout(function(){document.querySelector("#second_container").removeChild(autoclic_msg)}, 4*1000);
 				autoclic=true;
 			}
 		}
