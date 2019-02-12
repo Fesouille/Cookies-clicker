@@ -73,7 +73,7 @@ function upgrade_sound(){
 
     //lancement video apd score = 1.000.000
     var videoplay = setInterval(function(){
-      if (score > 999999) {
+      if (score > 999) {
         var video = document.querySelector(".maincontainer").appendChild(document.createElement("video"));
         video.setAttribute("src", "img/Cool Guys Don't Look At Explosions.mp4");
         video.setAttribute("autoplay", "true");
@@ -291,3 +291,5 @@ document.getElementById("click").addEventListener("click", function (){
     }
   }
 });
+
+// document.body.style.background
