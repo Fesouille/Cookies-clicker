@@ -32,15 +32,20 @@ body{
     background-position: -19px -3px;
     border: none;
     position: relative;
-	top:50%;
-	transform:translateY(-50%);
+	top:18%;
+	/* transform:translateY(-50%); */
+  transition: all .2s ease-in-out;
+  outline: 0;
+}
+#click:hover {
+  transform: scale(1.05);
+  outline: 0;
+}
+#click:active {
+  transform: scale(1.0);
+  outline: 0;
 }
 
-#click:hover{
-	width:200px;
-	height: 200px;
-	background-size: 233px auto;
-}
 .affichage{
 	background-color: black;
 	opacity: 0.5;

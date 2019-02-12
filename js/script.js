@@ -177,10 +177,6 @@ function bonus_time() {
     btps--;
     bb.innerHTML = "BONUS TIME " + btps + "s";
 
-    if(m != multiplicateur){
-      m
-    }
-
     if(btps < 1){
       bb.addEventListener("click", bonus_time);
       benable = false;
