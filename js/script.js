@@ -22,37 +22,38 @@ var autoclic_msg=document.createElement("p");
         score = score + cookieperclick;
         displayscore(score);
         add_autoclic();
-        console.log(cookieperclick);
     };
-
-    setInterval(function(){
-        displayscore(score);
-        checkprix();
-    }, 10);
 
     function displayscore(){
         document.getElementsByClassName("affichage")[0].setAttribute("value", score);
         document.getElementsByClassName("affichage")[0].innerHTML = "here your cookies : " + score;
     };
 
+    // actualize score on display each millisecond
+    setInterval(function(){
+        displayscore(score);
+        checkprix();
+    }, 10);
+
+    //add cookie and displays it when clicked
     document.getElementById("click").addEventListener("click", function(){
         addcookie();
-        console.log(score);
     });
 
+    //lancement video apd score = 1.000.000
     var videoplay = setInterval(function(){
-      if (score >= 999999) {
+      if (score > 999999) {
         var video = document.querySelector(".maincontainer").appendChild(document.createElement("video"));
         video.setAttribute("src", "img/Cool Guys Don't Look At Explosions.mp4");
         video.setAttribute("autoplay", "true");
         video.setAttribute("preload", "auto");
         video.setAttribute("position", "absolute");
         video.requestFullscreen;
-        console.log(video)
         clearInterval(videoplay);
       }
     }, 1);
 
+    //explosions lors du clic sur le multiplier
     var tableExplosions = ["explosion.gif", "explosion-2.gif", "explosion-3.gif", "explosion-4.gif", "explosion-5.gif", "explosion-6.gif"]
     document.getElementById("multiplier").addEventListener("click",function() {
       var explode = document.querySelector(".maincontainer").appendChild(document.createElement("img"));
