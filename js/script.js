@@ -92,11 +92,11 @@ function upgrade_sound(){
       explode.style.position = "absolute";
       explode.setAttribute("src", "img/"+ tableExplosions[Math.floor(tableExplosions.length * Math.random())]);
       explode.style.left = Math.random() *800 + "px";
-      explode.style.top = Math.random() *600 + "px";
+      explode.style.top = Math.random() *400 + "px";
 
       setTimeout(function frame() {
         explode.parentNode.removeChild(explode);
-      }, 3000);
+      }, 1000);
     });
     /*Ted*/
 /* Partie de JM */
