@@ -211,7 +211,7 @@ document.getElementById("bonus").addEventListener("click", bonus_time);
 //Raining Cookies
 var tableCookies=["mm.png","rainingCookie.png","oreo.png"];
 document.getElementById("click").addEventListener("click", function (){
-  var elem = document.querySelector(".maincontainer").appendChild(document.createElement("img"));
+  var elem = document.querySelector("#cookies").appendChild(document.createElement("img"));
   elem.style.position = "absolute";
   elem.style.width="50px";
   elem.style.height="50px";
