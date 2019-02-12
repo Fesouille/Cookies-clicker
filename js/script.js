@@ -22,7 +22,6 @@ var autoclic_msg=document.createElement("p");
         score = score + cookieperclick;
         displayscore(score);
         add_autoclic();
-        rainingCookie();
         console.log(cookieperclick);
     };
 
@@ -210,7 +209,8 @@ document.getElementById("bonus").addEventListener("click", bonus_time);
 
 
 //Raining Cookies
-function rainingCookie (){
+var tableCookies=["mm.png","rainingCookie.png","oreo.png"];
+document.getElementById("click").addEventListener("click", function (){
   var elem = document.querySelector(".maincontainer").appendChild(document.createElement("img"));
   elem.style.position = "absolute";
   elem.style.width="50px";
@@ -218,10 +218,8 @@ function rainingCookie (){
   elem.style.zIndex="1";
   var angle = Math.random()*360;
   elem.style.transform= "rotate(" + angle + "deg)";
-  elem.setAttribute("src", "img/rainingCookie.png");
-  console.log(elem);
+  elem.setAttribute("src", "img/"+ tableCookies[Math.floor(tableCookies.length * Math.random())]);
   elem.style.left = Math.random() *800 + "px";
-  console.log(elem);
   var pos = 0;
   var angle = Math.random() * 360;
   var id = setInterval(frame, 10);
@@ -232,8 +230,7 @@ function rainingCookie (){
     } else {
       pos++; 
       elem.style.top = pos + 'px';
-      elem.style.transform= "rotate("+ (angle + pos) + "deg)";
-      console.log(elem);    
+      elem.style.transform= "rotate("+ (angle + pos) + "deg)";    
     }
   }
-};
+});
