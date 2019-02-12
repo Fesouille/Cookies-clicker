@@ -4,48 +4,15 @@
   src: url("fonts/***");
 }
 */
-.boing {
+#click {
   transition: all .2s ease-in-out;
   outline: 0;
 }
-.boing:hover {
+#click:hover {
   transform: scale(1.05);
   outline: 0;
 }
-.boing:active {
+#click:active {
   transform: scale(1.0);
   outline: 0;
-}
-
-.maincontainer{
-  background: url(../img/cookie-background.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-#click{
-	width:190px;
-	height:190px;
-	border-radius: 50%;
-	background: url(../img/cookie.png);
-	background-size: 220px auto;
-	background-color: transparent;
-    background-repeat: no-repeat;
-    background-position: -19px -3px;
-    border: none;
-}
-
-.upgrade_button{
-	border:2px outset #c1946a;
-	color: white;
-	background-color: #c4b7a6;
-	margin-right: 10px;
-	padding:5px 5px;
-}
-.affichage{
-	background-color: black;
-	opacity: 0.55;
-	color: white;
-	font-weight: bold;
-	font-size: 25px;
-	text-align: center;
 }
