@@ -10,11 +10,12 @@ body{
 	min-width: 420px;
 	margin: auto;
 	margin-top: 15px;
+	background: url(../img/cookie-background.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 .maincontainer{
-  background: url(../img/cookie-background.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
+
   height: 350px;
 }
 #second_container{
@@ -118,4 +119,12 @@ button:disabled{
 	font-weight: bold;
 	font-size: 25px;
 	text-align: center;
+}
+video{
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	min-width: 100%;
+	min-height: 100%;
+	z-index: -1;
 }
