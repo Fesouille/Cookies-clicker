@@ -20,11 +20,11 @@ For this project, we have to realize a game based on the famous [Cookie Clicker]
 
 
 * Try the game! :
-	* [Our first cookie clicker]("https://fesouille.github.io/Cookies-clicker/")
+	* [Our first cookie clicker](https://fesouille.github.io/Cookies-clicker/)
 
 * A few illustrating pictures:
 ![Screenshot cookie clicker](img/cookie-clicker_1.png)
-![Screenshot cookie clicker](img/cookie-clicker_1.png)
+![Screenshot cookie clicker](img/cookie-clicker_2.png)
 
 
 * Progress: 
