@@ -9,7 +9,7 @@ Group project of [Broutin Jean-Marc](https://github.com/jmbroutin), [Diambu Anto
 
 
 * Project:
-For this project, we have to realize a game based on the famous [Cookie Clicker](http://orteil.dashnet.org/cookieclicker/). As our first game, we don't have to make it 100% similar, but we have a list of given functionalities to create (such as 'the multiplier', 'the autoclicker', 'the bonus').
+For this project, we have to realize a game based on the famous [Cookie Clicker](http://orteil.dashnet.org/cookieclicker/). As our first game, we don't have to make it 100% similar, but we have a list of given functionalities to create (such as 'the multiplier', 'the autoclicker', 'the bonus'). In order to achieve this project in group, we made use of [Trello](https://trello.com/) as our Kanban tool.
 
 * Content:
 	* HTML file: contains the head, body, and links to javascript and css files.
@@ -20,13 +20,13 @@ For this project, we have to realize a game based on the famous [Cookie Clicker]
 
 
 * Try the game! :
-	* [Our first cookie clicker]("")
+	* [Our first cookie clicker]("https://fesouille.github.io/Cookies-clicker/")
 
 * A few illustrating pictures:
-![Screenshot cookie clicker]("")
-![Screenshot cookie clicker]("")
+![Screenshot cookie clicker](img/cookie-clicker_1.png)
+![Screenshot cookie clicker](img/cookie-clicker_1.png)
 
 
 * Progress: 
-	* 07 february 2019: project beginning
+	* 07 february 2019: project beginning. In order to achieve this project in group, we made use of [Trello](https://trello.com/) as our Kanban tool.
 	* 14 janvier 2019: project end
