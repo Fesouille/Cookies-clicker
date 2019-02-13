@@ -123,6 +123,7 @@ button:disabled{
 	border-radius: 15px;
 	margin:10px 15px;
 	box-shadow: 0 0 10px 5px #000 ;
+	z-index:2;
 }
 
 video{
