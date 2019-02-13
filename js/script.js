@@ -43,7 +43,7 @@ function upgrade_sound(){
 //END of the sounds functions
 
 function make_price(price){
-		return price*2;
+		return Math.floor(price*1.5);
 };
 
 (function() {
@@ -117,7 +117,7 @@ function make_price(price){
         multiplicateur = multiplicateur + 1;
     };
 
-    document.getElementById("multiplier").innerHTML = "<h2>Multiplier x"+ multiplicateur + "</h2> <h4>[Price: " + mult_price+"]</h4>";
+    document.getElementById("multiplier").innerHTML = "<h2>Multiplier x"+ multiplicateur + "</h2> <h4>[Price: " + mult_price.toLocaleString("en-EN")+"]</h4>";
 
     document.getElementById("multiplier").addEventListener("click", function(){
 		boom();
@@ -129,7 +129,7 @@ function make_price(price){
                   cookieperclick = cookieperclick + multiplicateur + multiplicateur;
                 }
                 augmenterMultiplicateur(multiplicateur);
-                document.getElementById("multiplier").innerHTML = "<h2>Multiplier x"+ multiplicateur + "</h2> <h4>[Price: " + make_price(mult_price)+"]</h4>";
+                document.getElementById("multiplier").innerHTML = "<h2>Multiplier x"+ multiplicateur + "</h2> <h4>[Price: " + make_price(mult_price).toLocaleString("en-EN")+"]</h4>";
                 score = score - mult_price;
                 mult_price = make_price(mult_price);
             };
@@ -142,7 +142,7 @@ function make_price(price){
 	function add_autoclic(){
 		if(autoclic==false){
 			if(score>=autoclic_free){
-				document.querySelector("#autoclic_col").appendChild(autoclic_button).innerHTML="<h2>Auto-clic x"+autoclic_count+"</h2>  <h4>[Price: "+autoclic_price+"]</h4>";
+				document.querySelector("#autoclic_col").appendChild(autoclic_button).innerHTML="<h2>Auto-clic x"+autoclic_count+"</h2>  <h4>[Price: "+autoclic_price.toLocaleString("en-EN")+"]</h4>";
         setInterval(addcookie, 1000);
 				document.querySelector("#second_container").appendChild(autoclic_msg).innerHTML="Yeay, you've unlocked the autoclick! It clicks automatically every second :)";
 				setTimeout(function(){document.querySelector("#second_container").removeChild(autoclic_msg)}, 4*1000);
@@ -177,7 +177,7 @@ function make_price(price){
 		displayscore(score);
 		autoclic_price=make_price(autoclic_price);
 		autoclic_count++;
-		autoclic_button.innerHTML="<h2>Auto-clic x"+autoclic_count+"</h2>  <h4>[Price: "+autoclic_price+"]</h4>";
+		autoclic_button.innerHTML="<h2>Auto-clic x"+autoclic_count+"</h2>  <h4>[Price: "+autoclic_price.toLocaleString("en-EN")+"]</h4>";
     check_autoclic();
 		setInterval(addcookie, 1000);
 	})
@@ -192,7 +192,7 @@ function bonusinit() {
   b.setAttribute("type", "button");
   b.setAttribute("value", "5000");
   b.setAttribute("class", "upgrade_button");
-  b.innerHTML = "<h2>Bonus</h2> <h4>[Price: "+bprix +"]</h4>";
+  b.innerHTML = "<h2>Bonus</h2> <h4>[Price: "+bprix.toLocaleString("en-EN") +"]</h4>";
 };
 
 // !!! BONUS TIME !!!
@@ -229,7 +229,7 @@ function bonus_time() {
       bb.addEventListener("click", bonus_time);
       benable = false;
       cookieperclick = cookieperclick / 2;
-      bb.innerHTML = "<h2>Bonus</h2> <h4>[Price: "+bprix+"]</h4>";
+      bb.innerHTML = "<h2>Bonus</h2> <h4>[Price: "+bprix.toLocaleString("en-EN")+"]</h4>";
       bb.removeAttribute("disabled");
       clearInterval(countdown);
       bonus_audio.pause();
