@@ -78,7 +78,7 @@ function make_price(price){
 
     //lancement video apd score = 1.000.000
     var videoplay = setInterval(function(){
-      if (score > 99999) {
+      if (score > 999999) {
       	if(benable){
       		bonus_audio.volume=0.03;
       	}
