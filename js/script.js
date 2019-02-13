@@ -41,6 +41,10 @@ function upgrade_sound(){
 }
 //END of the sounds functions
 
+function make_price(price){
+		return price*2;
+};
+
 (function() {
 
     function addcookie(){
@@ -105,10 +109,6 @@ function upgrade_sound(){
 
     function augmenterMultiplicateur (){
         multiplicateur = multiplicateur + 1;
-    };
-
-    function make_price(price){
-        return price*2;
     };
 
     document.getElementById("multiplier").innerHTML = "<h2>Multiplier x"+ multiplicateur + "</h2> <h4>[Price: " + mult_price+"]</h4>";
@@ -194,7 +194,9 @@ function bonusinit() {
 
 // !!! BONUS TIME !!!
 // AJOUTER LE CHECK DE L'ACHAT DE MULTI LORS DU BONUS
+bprix = 5000;
 function bonus_time() {
+	bprix = make_price(bprix)
   bonus_audio.play();
   score = score - 5000;
   cookieperclick = cookieperclick * 2;
@@ -217,7 +219,7 @@ function bonus_time() {
       bb.addEventListener("click", bonus_time);
       benable = false;
       cookieperclick = cookieperclick / 2;
-      bb.innerHTML = "<h2>Bonus</h2> <h4>[Price: 5000]</h4>";
+      bb.innerHTML = "<h2>Bonus</h2> <h4>[Price: "+bprix+"]</h4>";
       bb.removeAttribute("disabled");
       clearInterval(countdown);
       bonus_audio.pause();
@@ -246,7 +248,7 @@ function checkprix() {
         break;
 
       case "bonus":
-        if (score < 5000 || benable) {
+        if (score < bprix || benable) {
           cebtn.disabled=true;
         } else {
           cebtn.disabled=false;
