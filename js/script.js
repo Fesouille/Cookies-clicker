@@ -3,6 +3,7 @@ var cookieperclick = 1;
 var multiplicateur = 1;
 var mult_price = 10;
 var benable = false;
+var video_enable=false;
 
 //autoclic variables - BEGIN
   //to specify that the autoclic does not exist yet
@@ -77,7 +78,11 @@ function make_price(price){
 
     //lancement video apd score = 1.000.000
     var videoplay = setInterval(function(){
-      if (score > 99999) {
+      if (score > 600) {
+      	if(benable){
+      		bonus_audio.volume=0.03;
+      	}
+      	video_enable=true;
         var video = document.querySelector("body").appendChild(document.createElement("video"));
         video.setAttribute("src", "img/Cool Guys Don't Look At Explosions.mp4");
         video.setAttribute("autoplay", "true");
@@ -85,6 +90,8 @@ function make_price(price){
 				clearInterval(videoplay);
 				setTimeout(function(){
 					document.querySelector("body").removeChild(video);
+					video_enable=false;
+					bonus_audio.volume=1.0;
 				}, 150000);
       }
     }, 1);
@@ -185,16 +192,22 @@ function bonusinit() {
   b.setAttribute("type", "button");
   b.setAttribute("value", "5000");
   b.setAttribute("class", "upgrade_button");
-  b.innerHTML = "<h2>Bonus</h2> <h4>[Price: 5000]</h4>";
+  b.innerHTML = "<h2>Bonus</h2> <h4>[Price: "+bprix +"]</h4>";
 };
 
 // !!! BONUS TIME !!!
 // AJOUTER LE CHECK DE L'ACHAT DE MULTI LORS DU BONUS
-bprix = 5000;
+bprix = 500;
 function bonus_time() {
+	score = score - bprix;
 	bprix = make_price(bprix)
-  bonus_audio.play();
-  score = score - 5000;
+  	if(video_enable){
+		bonus_audio.volume=0.03;	}
+	else if(!video_enable){
+		bonus_audio.volume=1.0;
+	}
+	bonus_audio.play();
+  
   cookieperclick = cookieperclick * 2;
 
   benable = true;
@@ -274,7 +287,6 @@ var tableCookies=["mm.png","rainingCookie.png","oreo.png"];
 numberofcookies = 0;
 document.getElementById("click").addEventListener("click", function (){
 	numberofcookies++;
-	console.log(numberofcookies);
   var elem = document.querySelector("#cookies").appendChild(document.createElement("img"));
 	elem.setAttribute("style","user-select: none");
   elem.style.position = "absolute";
