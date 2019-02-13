@@ -69,6 +69,7 @@ function upgrade_sound(){
     //add cookie and displays it when clicked
     document.getElementById("click").addEventListener("click", function(){
         addcookie();
+        cookie_sound();
     });
 
     //lancement video apd score = 1.000.000
