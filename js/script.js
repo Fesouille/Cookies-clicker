@@ -78,7 +78,7 @@ function make_price(price){
 
     //lancement video apd score = 1.000.000
     var videoplay = setInterval(function(){
-      if (score > 600) {
+      if (score > 99999) {
       	if(benable){
       		bonus_audio.volume=0.03;
       	}
@@ -197,7 +197,7 @@ function bonusinit() {
 
 // !!! BONUS TIME !!!
 // AJOUTER LE CHECK DE L'ACHAT DE MULTI LORS DU BONUS
-bprix = 500;
+bprix = 5000;
 function bonus_time() {
 	score = score - bprix;
 	bprix = make_price(bprix);
