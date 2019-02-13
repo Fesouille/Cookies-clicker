@@ -43,7 +43,7 @@ function upgrade_sound(){
 //END of the sounds functions
 
 function make_price(price){
-		return Math.floor(price*1.5);
+		return Math.floor(price*2);
 };
 
 (function() {
@@ -200,7 +200,7 @@ function bonusinit() {
 bprix = 5000;
 function bonus_time() {
 	score = score - bprix;
-	bprix = make_price(bprix);
+	bprix = Math.floor(bprix*1.5);
   	if(video_enable){
 		bonus_audio.volume=0.03;	
 	}
