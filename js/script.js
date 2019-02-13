@@ -51,7 +51,6 @@ function make_price(price){
         score = score + cookieperclick;
         displayscore(score);
         add_autoclic();
-        console.log(cookieperclick);
     };
 
     setInterval(function(){
@@ -119,16 +118,13 @@ function make_price(price){
             if (score >= mult_price){
                 if(!benable){
                   cookieperclick = cookieperclick + multiplicateur;
-                  console.log("normal");
                 } else{
                   cookieperclick = cookieperclick + multiplicateur + multiplicateur;
-                  console.log("bonus");
                 }
                 augmenterMultiplicateur(multiplicateur);
                 document.getElementById("multiplier").innerHTML = "<h2>Multiplier x"+ multiplicateur + "</h2> <h4>[Price: " + make_price(mult_price)+"]</h4>";
                 score = score - mult_price;
                 mult_price = make_price(mult_price);
-                console.log(multiplicateur, cookieperclick, score, mult_price);
             };
         });
 
@@ -275,7 +271,10 @@ document.getElementById("bonus").addEventListener("click", bonus_time);
 
 //Raining Cookies
 var tableCookies=["mm.png","rainingCookie.png","oreo.png"];
+numberofcookies = 0;
 document.getElementById("click").addEventListener("click", function (){
+	numberofcookies++;
+	console.log(numberofcookies);
   var elem = document.querySelector("#cookies").appendChild(document.createElement("img"));
 	elem.setAttribute("style","user-select: none");
   elem.style.position = "absolute";
@@ -290,15 +289,17 @@ document.getElementById("click").addEventListener("click", function (){
   var angle = Math.random() * 360;
   var id = setInterval(frame, 10);
   function frame() {
-    if (pos == 800) {
+    if (pos == 800||numberofcookies>200) {
       clearInterval(id);
       elem.parentNode.removeChild(elem);
+			numberofcookies--;
     } else {
       pos++;
       elem.style.top = pos + 'px';
       elem.style.transform= "rotate("+ (angle + pos) + "deg)";
     }
   }
+
 });
 
 // document.body.style.background
