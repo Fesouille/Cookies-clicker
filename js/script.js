@@ -57,7 +57,7 @@ function upgrade_sound(){
 
     function displayscore(){
         document.getElementsByClassName("affichage")[0].setAttribute("value", score);
-        document.getElementsByClassName("affichage")[0].innerHTML = "Here your cookies : <br>" + score;
+        document.getElementsByClassName("affichage")[0].innerHTML = "Here your cookies : <br>" + score.toLocaleString("en-EN");
     };
 
     // actualize score on display each millisecond
