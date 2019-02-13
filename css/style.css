@@ -112,6 +112,7 @@ button:active{
 button:disabled{
 	opacity: 0.6;
 	transform:none;
+	cursor:grab;
 }
 #autoclic_msg{
 	position: absolute;
