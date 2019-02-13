@@ -284,7 +284,7 @@ document.getElementById("click").addEventListener("click", function (){
   elem.style.transform= "rotate(" + angle + "deg)";
   elem.setAttribute("src", "img/"+ tableCookies[Math.floor(tableCookies.length * Math.random())]);
   elem.style.left = Math.random() *95 + "%";
-  var pos = 0;
+  var pos = -15;
   var angle = Math.random() * 360;
   var id = setInterval(frame, 10);
   function frame() {
