@@ -10,13 +10,13 @@ body{
 	min-width: 420px;
 	margin: auto;
 	margin-top: 15px;
-	background: url(../img/cookie-background.jpg);
+	background: url(../img/cookie-background.jpg) no-repeat center center fixed;
 	background-size: cover;
-	background-repeat: no-repeat;
+	overflow: hidden;
 }
 .maincontainer{
-
-  height: 350px;
+	padding-top: 5%;
+  height: 550px;
 }
 #second_container{
 	display: flex;
@@ -24,27 +24,28 @@ body{
 	height:100%;
 }
 #click{
-	width:190px;
-	height:190px;
+	width:250px;
+	height:250px;
 	border-radius: 50%;
 	background: url(../img/cookie.png);
-	background-size: 220px auto;
+	background-size: 290px auto;
 	background-color: transparent;
     background-repeat: no-repeat;
     background-position: -19px -3px;
     border: none;
     position: relative;
-	top:18%;
+	top:25%;
 	z-index: 2;
 	/* transform:translateY(-50%); */
-  transition: all .2s ease-in-out;
+  transition: all .25s ease-in-out;
 	outline: 0;
 }
 #click:hover {
-  transform: scale(1.05);
+  transform: scale(1.15);
   outline: 0;
 }
 #click:active {
+	transition-duration: .1s;
   transform: scale(1.0);
   outline: 0;
 }
@@ -55,7 +56,8 @@ body{
 	color: white;
 	font-weight: bold;
 	font-size: 25px;
-	text-align: center;
+	justify-content: center;
+	width: 50%;
 }
 #upgrades, #cookies{
 	width:50%;
@@ -64,8 +66,9 @@ body{
 
 }
 #bonus{
-	width: 100%;
-	font-size: 25px;
+	width: 75%;
+	font-size: 21px;
+	border-radius: 100px;
 }
 #multiplier_col, #autoclic_col{
 	width: 50%;
@@ -81,13 +84,15 @@ body{
 	transform:translateY(-50%);
 }
 .upgrade_button{
+	outline: 0;
 	border:2px double #CC6666;
 	color: white;
 	background-color: #7F1A3A;
 	margin-right: 10px;
 	padding:5px 5px;
-	border-radius: 25px;
+	border-radius: 75px;
 	margin-bottom: 5px;
+	height: 150px;
 }
 button:hover{
 	cursor: grab;
@@ -108,7 +113,7 @@ button:disabled{
 	opacity: 0.55;
 	color: white;
 	padding:2px 10px;
-	border-radius: 25%;
+	border-radius: 25px;
 	margin:10px 15px;
 	box-shadow: 0 0 10px 5px #000 ;
 }
@@ -126,5 +131,8 @@ video{
 	bottom: 0;
 	min-width: 100%;
 	min-height: 100%;
+	z-index: -2;
+}
+.boomy{
 	z-index: -1;
 }

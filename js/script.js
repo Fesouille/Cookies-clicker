@@ -57,7 +57,7 @@ function upgrade_sound(){
 
     function displayscore(){
         document.getElementsByClassName("affichage")[0].setAttribute("value", score);
-        document.getElementsByClassName("affichage")[0].innerHTML = "Here your cookies : " + score;
+        document.getElementsByClassName("affichage")[0].innerHTML = "Here your cookies : <br>" + score + "";
     };
 
     // actualize score on display each millisecond
@@ -73,7 +73,7 @@ function upgrade_sound(){
 
     //lancement video apd score = 1.000.000
     var videoplay = setInterval(function(){
-      if (score > 50) {
+      if (score > 99999) {
         var video = document.querySelector("body").appendChild(document.createElement("video"));
         video.setAttribute("src", "img/Cool Guys Don't Look At Explosions.mp4");
         video.setAttribute("autoplay", "true");
@@ -87,17 +87,18 @@ function upgrade_sound(){
 
     //explosions lors du clic sur le multiplier
     var tableExplosions = ["explosion.gif", "explosion-2.gif", "explosion-3.gif", "explosion-4.gif", "explosion-5.gif", "explosion-6.gif"]
-    document.getElementById("multiplier").addEventListener("click",function() {
+    function boom() {
       var explode = document.querySelector(".maincontainer").appendChild(document.createElement("img"));
+			explode.setAttribute("class","boomy");
       explode.style.position = "absolute";
       explode.setAttribute("src", "img/"+ tableExplosions[Math.floor(tableExplosions.length * Math.random())]);
       explode.style.left = Math.random() *800 + "px";
-      explode.style.top = Math.random() *600 + "px";
+      explode.style.top = Math.random() *400 + "px";
 
       setTimeout(function frame() {
         explode.parentNode.removeChild(explode);
-      }, 3000);
-    });
+      }, 1000);
+    };
     /*Ted*/
 /* Partie de JM */
 
@@ -109,9 +110,10 @@ function upgrade_sound(){
         return price*2;
     };
 
-    document.getElementById("multiplier").innerHTML = "Multiplier x"+ multiplicateur + " Price: " + mult_price;
+    document.getElementById("multiplier").innerHTML = "<h2>Multiplier x"+ multiplicateur + "</h2> <h4>[Price: " + mult_price+"]</h4>";
 
     document.getElementById("multiplier").addEventListener("click", function(){
+		boom();
 		upgrade_sound();
             if (score >= mult_price){
                 if(!benable){
@@ -122,7 +124,7 @@ function upgrade_sound(){
                   console.log("bonus");
                 }
                 augmenterMultiplicateur(multiplicateur);
-                document.getElementById("multiplier").innerHTML = "Multiplier x"+ multiplicateur + " Price: " + make_price(mult_price);
+                document.getElementById("multiplier").innerHTML = "<h2>Multiplier x"+ multiplicateur + "</h2> <h4>[Price: " + make_price(mult_price)+"]</h4>";
                 score = score - mult_price;
                 mult_price = make_price(mult_price);
                 console.log(multiplicateur, cookieperclick, score, mult_price);
@@ -136,7 +138,7 @@ function upgrade_sound(){
 	function add_autoclic(){
 		if(autoclic==false){
 			if(score>=autoclic_free){
-				document.querySelector("#autoclic_col").appendChild(autoclic_button).innerHTML="Auto-clic "+autoclic_count+"x,  price="+autoclic_price;
+				document.querySelector("#autoclic_col").appendChild(autoclic_button).innerHTML="<h2>Auto-clic x"+autoclic_count+"</h2>  <h4>[Price: "+autoclic_price+"]</h4>";
         setInterval(addcookie, 1000);
 				document.querySelector("#second_container").appendChild(autoclic_msg).innerHTML="Yeay, you've unlocked the autoclick! It clicks automatically every second :)";
 				setTimeout(function(){document.querySelector("#second_container").removeChild(autoclic_msg)}, 4*1000);
@@ -165,12 +167,13 @@ function upgrade_sound(){
 	- check_autoclic() function is called to make sure user cannot buy another one after new price is calculated
 	- finally, launch an interval for the function addcookie() every seconds*/
 	autoclic_button.addEventListener("click", function(){
+		boom();
 		upgrade_sound();
 		score-=autoclic_price;
 		displayscore(score);
 		autoclic_price=make_price(autoclic_price);
 		autoclic_count++;
-		autoclic_button.innerHTML="Auto-clic "+autoclic_count+"x,  price="+autoclic_price;
+		autoclic_button.innerHTML="<h2>Auto-clic x"+autoclic_count+"</h2>  <h4>[Price: "+autoclic_price+"]</h4>";
     check_autoclic();
 		setInterval(addcookie, 1000);
 	})
@@ -185,7 +188,7 @@ function bonusinit() {
   b.setAttribute("type", "button");
   b.setAttribute("value", "5000");
   b.setAttribute("class", "upgrade_button");
-  b.appendChild(document.createTextNode("Bonus [Prix = 5000]"));
+  b.innerHTML = "<h2>Bonus</h2> <h4>[Price: 5000]</h4>";
 };
 
 // !!! BONUS TIME !!!
@@ -201,19 +204,19 @@ function bonus_time() {
 
   bb = document.getElementById("bonus");
   bb.setAttribute('disabled', 'true');
-  bb.innerHTML = "BONUS TIME " + btps + "s";
+  bb.innerHTML = "<h1>BONUS TIME " + btps + "s</h1>";
   bb.removeEventListener("click", bonus_time);
 
   var countdown = setInterval(function() {
 
     btps--;
-    bb.innerHTML = "BONUS TIME " + btps + "s";
+    bb.innerHTML = "<h1>BONUS TIME " + btps + "s</h1>";
 
     if(btps < 1){
       bb.addEventListener("click", bonus_time);
       benable = false;
       cookieperclick = cookieperclick / 2;
-      bb.innerHTML = "Bonus [Prix = 5000]";
+      bb.innerHTML = "<h2>Bonus</h2> <h4>[Price: 5000]</h4>";
       bb.removeAttribute("disabled");
       clearInterval(countdown);
       bonus_audio.pause();
@@ -270,6 +273,7 @@ document.getElementById("bonus").addEventListener("click", bonus_time);
 var tableCookies=["mm.png","rainingCookie.png","oreo.png"];
 document.getElementById("click").addEventListener("click", function (){
   var elem = document.querySelector("#cookies").appendChild(document.createElement("img"));
+	elem.setAttribute("style","user-select: none");
   elem.style.position = "absolute";
   elem.style.width="50px";
   elem.style.height="50px";
@@ -282,7 +286,7 @@ document.getElementById("click").addEventListener("click", function (){
   var angle = Math.random() * 360;
   var id = setInterval(frame, 10);
   function frame() {
-    if (pos == 600) {
+    if (pos == 800) {
       clearInterval(id);
       elem.parentNode.removeChild(elem);
     } else {
