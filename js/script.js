@@ -200,9 +200,10 @@ function bonusinit() {
 bprix = 500;
 function bonus_time() {
 	score = score - bprix;
-	bprix = make_price(bprix)
+	bprix = make_price(bprix);
   	if(video_enable){
-		bonus_audio.volume=0.03;	}
+		bonus_audio.volume=0.03;	
+	}
 	else if(!video_enable){
 		bonus_audio.volume=1.0;
 	}
