@@ -19,6 +19,8 @@ In order to achieve this project in group, we made use of [Trello](https://trell
 
 	* Javascript file: this file contains all functionalities of the game i.e. the button, their actions, ...
 
+	* Kanban tool: [Trello](https://trello.com/b/qQLJ6aG3)
+
 
 * Try the game! :
 	* [Our first cookie clicker](https://fesouille.github.io/Cookies-clicker/)
