@@ -5,7 +5,7 @@ Cookies Clicker
 Group project of [Broutin Jean-Marc](https://github.com/jmbroutin), [Diambu Antoine](https://github.com/AntoineDia), [Ismail Joseph](https://github.com/Fesouille) and [Wauquier Teddy](https://github.com/Elleonors).
 ----------------------------------
 
-*Exercice realized from the 07 february 2019 to 14 february 2019, as a group project for the formation [BeCode](https://www.becode.org/) to be a Web Developper*
+*Exercice realized as a group project for the formation [BeCode](https://www.becode.org/) to be a Web Developper*
 
 
 * Project:
